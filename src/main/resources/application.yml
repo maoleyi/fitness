@@ -1,0 +1,20 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: fitness
+  ai:
+    ollama:
+      base-url: http://localhost:11434   # Ollama
+      chat:
+        options:
+          model: llama3.2:3b                   # 模型名称
+          temperature: 0.3 # RAG 场景建议使用较低温度，减少幻觉
+      embedding:
+        model: nomic-embed-text # Embedding 模型（用于文档向量化）
+        options:
+          num-batch: 4          #一次处理的文本数量
+logging:
+  level:
+    org.springframework.ai.rag: DEBUG
+    org.springframework.ai.vectorstore: DEBUG
